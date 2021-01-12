@@ -1,13 +1,30 @@
 const express = require("express");
+require('dotenv').config();
+
+
 const bodyParser = require("body-parser");
+var cookieParser = require('cookie-parser');
 const cors = require('cors');
-// const routes = require('./routes');
 // const db = require('./db');
 const app = express();
 const chalk = require('chalk');
+const path = require('path');
+
+const bcrypt = require('bcrypt');
+const ejs = require('ejs');
+
+const fs = require('fs');
+// custom tools:
+const auth = require('./utils/auth');
+const formatDateTime = require('./utils/formatDateTime');
+const sendMail = require('./utils/sendMail');
+
+const genericError = 'Oops! It\'s not you, it\'s us. There\'s been a server error. Please try again later or get in touch with admin.';
+
 
 // parse requests of content-type: application/json
 app.use(bodyParser.json());
+app.use(cookieParser());
 app.use(cors());
 
 app.use(function (req, res, next) {
@@ -17,25 +34,24 @@ app.use(function (req, res, next) {
 });
 // parse requests of content-type: application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: true }));
-
+app.set('view engine', 'ejs');
+// app.set("views", __dirname + "/public");
+app.set('views','./views');
+app.use(express.static('public'));
 // simple route
-
+// db.connect((err) => {
+//   console.log('db connected');
+//   if (err) throw err;
+// });
 
 app.get("/", (req, res) => {
-  res.send({
-    message: "Express API works!"
-  });
+  res.render(path.join(__dirname, 'views/index.ejs'));
 });
 
 
 // db.connect();
-// app.use('/api', routes);
 
-// set port, listen for requests
-config = {
-    PORT: 3000
-};
-app.listen(config.PORT, () => {
+app.listen(process.env.PORT, () => {
 
-  console.log(`Server is running in ${config.NODE_ENV} on ${chalk.green('http://localhost:'+ config.PORT)}.`);
+  console.log(`Server is running in ${process.env.NODE_ENV} on ${chalk.green('http://localhost:'+ process.env.PORT)}.`);
 });
