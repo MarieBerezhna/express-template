@@ -1,5 +1,5 @@
 const express = require("express");
-require('dotenv').config();
+const config = require('dotenv').config();
 
 
 const bodyParser = require("body-parser");
@@ -47,9 +47,6 @@ app.use(express.static('public'));
 app.get("/", (req, res) => {
   res.render(path.join(__dirname, 'views/index.ejs'));
 });
-
-
-// db.connect();
 
 app.listen(process.env.PORT, () => {
 
