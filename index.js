@@ -38,16 +38,23 @@ app.set('view engine', 'ejs');
 // app.set("views", __dirname + "/public");
 app.set('views','./views');
 app.use(express.static('public'));
-// simple route
+
 // db.connect((err) => {
 //   console.log('db connected');
 //   if (err) throw err;
 // });
 
+
+// simple route
 app.get("/", (req, res) => {
   res.render(path.join(__dirname, 'views/index.ejs'));
 });
-
+app.get("/login", (req, res) => {
+  res.render(path.join(__dirname, 'views/user/login.ejs'));
+});
+app.get("/resetpass", (req, res) => {
+  res.render(path.join(__dirname, 'views/user/resetpass.ejs'));
+});
 app.listen(process.env.PORT, () => {
 
   console.log(`Server is running in ${process.env.NODE_ENV} on ${chalk.green('http://localhost:'+ process.env.PORT)}.`);
