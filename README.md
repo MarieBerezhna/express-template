@@ -6,11 +6,11 @@ database : postgress;
 mail server;
 
 
-1.setup:
-ssh to your server and clone the project, or pull it like that: 
-and create docker container
-# build docker image  and start container fisrt time:
+# 1.setup:
+ssh to your server and clone or pull the project 
+and create docker container (replace {values} with your prefferable names):
 cd {path-to-your-app} 
+
 git pull https://github.com/MarieBerezhna/express-template.git 
 
 docker build -t {docker-image-name} . 
