@@ -1,19 +1,19 @@
 var nodemailer = require('nodemailer');
 var transporter = nodemailer.createTransport({
     pool: true,
-    host: 'mail.webmarie.com',
-    port: 465,
+    host: process.env.MAIL_HOST,
+    port: process.env.MAIL_PORT,
     secure: true,
     auth: {
-        user: 'postapp@webmarie.com',
-        pass: 'postappwebmarie'
+        user: process.env.MAIL_USER,
+        pass:  process.env.MAIL_PASS
     }
 });
 
 
 module.exports = async function (to, subject, html) { 
     var mailOptions = {
-        from: 'noreply@raffle.allstars-it.com',
+        from: process.env.MAIL_FROM_ADDRESS,
         to: to,
         subject: subject,
         html: html
