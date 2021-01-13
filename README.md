@@ -12,7 +12,9 @@ and create docker container
 # build docker image  and start container fisrt time:
 cd {path-to-your-app} 
 git pull https://github.com/MarieBerezhna/express-template.git 
+
 docker build -t {docker-image-name} . 
+
 docker run --name {docker-container-name} -v {docker-volume-name}:/usr/src/app/{media-folder} -p {outer-port}:{inner-port} {docker-image-name}
 
 create a cronjob for development:
