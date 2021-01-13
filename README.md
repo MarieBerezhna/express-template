@@ -12,12 +12,14 @@ Create user and database
 # 1.1 Create database
 Save the username, password and database name - you need to assign those values to env variables later
 
-```sudo -u postgres psql
+```
+sudo -u postgres psql
 postgres=# create database mydb;
 postgres=# create user myuser with encrypted password 'mypass';
-postgres=# grant all privileges on database mydb to myuser;```
+postgres=# grant all privileges on database mydb to myuser;
+```
 
-run ```\q``` to quit psql and login as you user using ```psql -U myuser mydb ``` then enter your password
+run ```\q``` to quit psql and login as you user using ```psql -U myuser mydb``` then enter your password
 
 # 1.2 Create tables
 
