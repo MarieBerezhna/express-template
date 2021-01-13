@@ -19,10 +19,18 @@ postgres=# create user myuser with encrypted password 'mypass';
 postgres=# grant all privileges on database mydb to myuser;
 ```
 
-run ```\q``` to quit psql and login as you user using ```psql -U myuser mydb``` then enter your password
-
 # 1.2 Create tables
+run ```\q``` to quit psql and login as you user using ```psql -U myuser mydb```, enter your password and run:
+```
+CREATE TABLE users (
+	id serial NOT NULL,
+	email text NOT NULL,
+	name text NOT NULL,
+	pass text NOT NULL
+);
+```
 
+# 2 Setup working folder and cronjob for development
 and clone or pull the project and create docker container (replace {values} with your prefferable names):
 
 cd {path-to-your-app} 
