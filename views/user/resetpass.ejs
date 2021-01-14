@@ -1,6 +1,15 @@
 <%- include('../partials/header.ejs')%>
-<div class="container text-center my-5">
-    <h1>Reset password</h1>
-    <p>This is the login page</p>
+<div class="container my-5" style="height: auto; min-height: 95vh;">
+    <span id="pass-error" class=" text-danger"></span>
+    <div class="form my-5">
+        <form class="request-resetpass-form">
+            <h2 class="text-secondary pb-2">Please, enter your e-mail:</h2>
+            
+            <label for="email"></label>
+                <input id="email" type="text" name="text"
+                    placeholder="E-mail" required/>
+            <button class="btn btn-success" type="submit">LET'S GO!</button>
+        </form>
+    </div>
 </div>
 <%- include('../partials/footer.ejs')%>

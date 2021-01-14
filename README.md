@@ -32,14 +32,15 @@ CREATE TABLE users (
 
 # 2 Setup working folder and cronjob for development
 and clone or pull the project and create docker container (replace {values} with your prefferable names):
+Let's say you store your projects at ~/projects/ and the name of this project is "template". We gonna call our docker image "user/template" and container and volume - "template" (replace as you wish). We also assume that you'll store media in /uploads folder within your app.
 
-cd {path-to-your-app} 
+cd projects/template
 
 git pull https://github.com/MarieBerezhna/express-template.git 
 
-docker build -t {docker-image-name} . 
+docker build -t user/template . 
 
-docker run --name {docker-container-name} -v {docker-volume-name}:/usr/src/app/{media-folder} -p {outer-port}:{inner-port} {docker-image-name}
+docker run --name template -v template:/usr/src/app/uploads -p 8083:8083 user/template
 
 
 docker refresh every 5 min crontab:
