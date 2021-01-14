@@ -34,9 +34,12 @@ CREATE TABLE users (
 and clone or pull the project and create docker container (replace {values} with your prefferable names):
 Let's say you store your projects at ~/projects/ and the name of this project is "template". We gonna call our docker image "user/template" and container and volume - "template" (replace as you wish). We also assume that you'll store media in /uploads folder within your app.
 
-cd projects/template
+ssh to your server
+cd projects
 
-git pull https://github.com/MarieBerezhna/express-template.git 
+git clone https://github.com/MarieBerezhna/express-template.git 
+mv express-template template //rename folder
+cd template
 
 docker build -t user/template . 
 
